@@ -18,7 +18,7 @@ namespace MyApp
                 .Enrich.FromLogContext()
                 .WriteTo.Logger(l =>
                 {
-                    l.WriteTo.File("./App_Data/logs/log.txt", LogEventLevel.Information, logTemplate,
+                    l.WriteTo.File("./App_Data/logs/log{date}.txt", LogEventLevel.Information, logTemplate,
                         rollingInterval: RollingInterval.Day, retainedFileCountLimit: 366
                     );
                     l.Filter.ByExcluding(e => e.Properties.ContainsKey("foobar"));
